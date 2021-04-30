@@ -1,0 +1,8 @@
+{
+  "name": "com.metrological.app.myawesomeapp",
+  "description": "ui-component-examples",
+  "dependencies": {
+    "@lightningjs/sdk": "^4.3.1",
+    "@lightningjs/ui": "github:jfboeve/Lightning-UI"
+  }
+}
