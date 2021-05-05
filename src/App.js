@@ -18,13 +18,15 @@
  */
 
 import { Router, Utils } from '@lightningjs/sdk'
+import Legend from './app/Legend.js';
 import routerConfig from './lib/routerConfig';
 
 export default class App extends Router.App {
   static _template() {
     return {
       Background: { w: 1920, h: 1080, rect: true, color: this.bindProp('background') },
-      ...super._template()
+      ...super._template(),
+      Legend: {type: Legend, x: 1860, y: 1000}
     }
   }
 
@@ -37,6 +39,11 @@ export default class App extends Router.App {
 
   static colors() {
     return true;
+  }
+
+
+  handleHashChange() {
+    console.log('handleHashChange')
   }
 
   _setup() {
