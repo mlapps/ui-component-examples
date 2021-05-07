@@ -3,6 +3,6 @@
   "description": "ui-component-examples",
   "dependencies": {
     "@lightningjs/sdk": "^4.3.1",
-    "@lightningjs/ui": "github:jfboeve/Lightning-UI"
+    "@lightningjs/ui": "^1.0.0"
   }
 }
