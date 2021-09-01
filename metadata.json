@@ -1,6 +1,6 @@
 {
-  "name": "ui-component-examples",
+  "name": "UI Component Examples",
   "identifier": "ui.component.examples",
-  "version": "1.0.0",
-  "icon": "./static/icon.png"
+  "version": "1.0.2",
+  "icon": "./static/icon.jpg"
 }
