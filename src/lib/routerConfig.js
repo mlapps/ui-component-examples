@@ -1,16 +1,10 @@
 import {AppInstance} from "@lightningjs/sdk/src/Application";
 import {Colors} from "@lightningjs/sdk";
-import { Splash } from "@/app/index.js";
 import { ListAsColumn, ListAsColumnWithScroll, ListAsRow, ListAsRowWithScroll, ListCombo } from "../examples/list";
 import { GridAsColumns, GridAsColumnsMosaic, GridAsColumnsWithScroll, GridAsRows, GridAsRowsMosaic, GridAsRowsWithScroll } from "../examples/grid";
 import { CarouselAsColumn, CarouselAsRow } from "../examples/carousel";
 
 const routes = [
-    {
-        path: 'splash',
-        component: Splash,
-        widgets: ['menu']
-    },
     {
         path: 'list-row',
         component: ListAsRow,
@@ -79,7 +73,7 @@ const routes = [
 ]
 
 export default {
-    root: 'splash',
+    root: routes[0].path,
     beforeEachRoute: (from, to) => {
         const randomColor = `color${Math.floor(Math.random() * 5) + 1}`;
         AppInstance.themeColor = randomColor;
