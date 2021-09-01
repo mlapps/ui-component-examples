@@ -8,87 +8,82 @@ import { CarouselAsColumn, CarouselAsRow } from "../examples/carousel";
 const routes = [
     {
         path: 'splash',
-        component: Splash
+        component: Splash,
+        widgets: ['menu']
     },
     {
         path: 'list-row',
-        component: ListAsRow
+        component: ListAsRow,
+        widgets: ['menu']
     },
     {
         path: 'list-row-with-scroll',
-        component: ListAsRowWithScroll
+        component: ListAsRowWithScroll,
+        widgets: ['menu']
     },
     {
         path: 'list-column',
-        component: ListAsColumn
+        component: ListAsColumn,
+        widgets: ['menu']
     },
     {
         path: 'list-column-with-scroll',
-        component: ListAsColumnWithScroll
+        component: ListAsColumnWithScroll,
+        widgets: ['menu']
     },
     {
         path: 'list-combo',
-        component: ListCombo
+        component: ListCombo,
+        widgets: ['menu']
     },
     {
         path: 'carousel-row',
-        component: CarouselAsRow
+        component: CarouselAsRow,
+        widgets: ['menu']
     },
     {
         path: 'carousel-column',
-        component: CarouselAsColumn
+        component: CarouselAsColumn,
+        widgets: ['menu']
     },
     {
         path: 'grid-rows',
-        component: GridAsRows
+        component: GridAsRows,
+        widgets: ['menu']
     },
     {
         path: 'grid-rows-with-scroll',
-        component: GridAsRowsWithScroll
+        component: GridAsRowsWithScroll,
+        widgets: ['menu']
     },
     {
         path: 'grid-columns',
-        component: GridAsColumns
+        component: GridAsColumns,
+        widgets: ['menu']
     },
     {
         path: 'grid-columns-with-scroll',
-        component: GridAsColumnsWithScroll
+        component: GridAsColumnsWithScroll,
+        widgets: ['menu']
     },
     {
         path: 'grid-rows-mosaic',
-        component: GridAsRowsMosaic
+        component: GridAsRowsMosaic,
+        widgets: ['menu']
     },
     {
         path: 'grid-columns-mosaic',
-        component: GridAsColumnsMosaic
+        component: GridAsColumnsMosaic,
+        widgets: ['menu']
     }
 ]
-const getRouteIndex = (route) => {
-    for(let i = 0; i < routes.length; i++) {
-        if(route === routes[i].path) {
-            return i;
-        }
-    }
-    return -1;
-}
 
 export default {
     root: 'splash',
     beforeEachRoute: (from, to) => {
-        const routeIndex = getRouteIndex(to.hash);
         const randomColor = `color${Math.floor(Math.random() * 5) + 1}`;
         AppInstance.themeColor = randomColor;
         AppInstance.background = Colors(randomColor).get();
-        let legend = ['previous', 'next'];
-
-        if(routeIndex === 0) {
-            legend = ['next'];
-        }
-        if(routeIndex === routes.length - 1) {
-            legend = ['previous'];
-        }
-
-        AppInstance.tag('Legend').setLegend(legend);
         return true;
     },
     routes

@@ -4,10 +4,6 @@
       "clearColor": "0x00000000",
       "useImageWorker": true
     },
-    "keys": {
-      "187": "NextRoute",
-      "189": "PreviousRoute"
-    },
     "debug": false
   },
   "platformSettings": {

@@ -17,16 +17,18 @@
  * limitations under the License.
  */
 
-import { Router, Utils } from '@lightningjs/sdk'
-import Legend from './app/Legend.js';
-import routerConfig from './lib/routerConfig';
+import { Router, Utils } from '@lightningjs/sdk';
+import Menu from './app/Menu.js';
+import routerConfig from './lib/routerConfig.js';
 
 export default class App extends Router.App {
   static _template() {
     return {
       Background: { w: 1920, h: 1080, rect: true, color: this.bindProp('background') },
       ...super._template(),
-      Legend: {type: Legend, x: 1860, y: 1000}
+      Widgets: {
+        Menu: {type: Menu, visible: true}
+      }
     }
   }
 
@@ -41,41 +43,8 @@ export default class App extends Router.App {
     return true;
   }
 
-
-  handleHashChange() {
-    console.log('handleHashChange')
-  }
-
   _setup() {
     Router.startRouter(routerConfig, this);
-  }
-
-  _getCurrentRouteIndex() {   
-    const currentRoute = Router.getActiveRoute();
-    const routes = routerConfig.routes;
-    for(let i = 0; i < routes.length; i++) {
-        if(currentRoute === routes[i].path) {
-            return i;
-        }
-    }
-    return 0;
-}
-
-  _navigate(dir) {
-    const index = this._getCurrentRouteIndex();
-    if((dir === -1 && index === 0) || (dir === 1 && index === routerConfig.routes.length - 1)) {
-      return;
-    }
-    const targetIndex = Math.min(Math.max(index + dir, 0), routerConfig.routes.length - 1);
-    Router.navigate(routerConfig.routes[targetIndex].path, { reload: true }, false);
-  }
-
-  _handleNextRoute() {
-    this._navigate(1);
-  }
-
-  _handlePreviousRoute() {
-    this._navigate(-1);
   }
 
   set themeColor(str) {
