@@ -26,7 +26,7 @@ export default class GridAsColumns extends Page {
         return {
             ...super._template(),
             Content: {
-                Grid: {x: 90, y: 200, w: 1740, h: 780, columns: 3, spacing: 30, itemType: ImageCell, type: Grid},
+                Grid: {x: 90, y: 200, w: 1740, h: 780, columns: 3, scroll: 300, spacing: 30, itemType: ImageCell, type: Grid},
             }
         }
     }
