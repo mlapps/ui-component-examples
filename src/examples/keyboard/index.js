@@ -18,3 +18,4 @@
  */
 
 export {default as KeyboardSimple} from './KeyboardSimple.js';
+export {default as KeyboardAdvanced} from './KeyboardAdvanced.js';

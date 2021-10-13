@@ -21,7 +21,7 @@ import Page from "../../app/Page";
 import { Keyboard, Key as BaseKey, InputField} from "@lightningjs/ui";
 import { Colors, Utils } from "@lightningjs/sdk";
 
-export default class KeyboardSimple extends Page {
+export default class KeyboardAdvanced extends Page {
     static _template() {
         return {
             ...super._template(),
@@ -30,7 +30,7 @@ export default class KeyboardSimple extends Page {
                     InputField: {x: 20, y: 20, type: InputField},
                 },
                 Keyboard: {
-                    y: 380, w: 1920, type: Keyboard, config: keyboardConfig, currentLayout: 'ABC', maxCharacters: 24
+                    y: 380, w: 1920, type: Keyboard, config: keyboardConfig, currentLayout: 'abc', maxCharacters: 24
                 },
             }
         }
@@ -51,7 +51,7 @@ export default class KeyboardSimple extends Page {
     }
 
     static get header() {
-        return 'Simple Keyboard';
+        return 'Advanced Keyboard';
     }
 
     static get icon() {
@@ -77,7 +77,7 @@ class Key extends BaseKey {
     }
 
     static get width() {
-        return 60;
+        return 90;
     }
     static get height() {
         return 60;
@@ -140,22 +140,27 @@ class IconKey extends ActionKey {
 
 const keyboardConfig = {
     layouts: {
+        'abc': [
+            ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'],
+            ['k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't'],
+            ['u', 'v', 'w', 'x', 'y', 'z', '_', '-', '@', '.'],
+            ['Layout:ABC', 'Layout:123', 'Space', 'Clear', 'Backspace']
+        ],
         'ABC': [
-            ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
-            ['Layout:123', 'Space', 'Clear', 'Backspace']
+            ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
+            ['K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'],
+            ['U', 'V', 'W', 'X', 'Y', 'Z', '_', '-', '@', '.'],
+            ['Layout:abc', 'Layout:123', 'Space', 'Clear', 'Backspace']
         ],
         '123': [
             ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
-            ['Layout:ABC', 'Space', 'Clear', 'Backspace']
+            ['Layout:abc', 'Space', 'Clear', 'Backspace']
         ]
     },
     styling: {
         align: 'center',
         horizontalSpacing: 5,
         verticalSpacing: 20,
-        Row2: {
-            spacing: 10
-        }
     },
     buttonTypes: {
         default: {
@@ -168,7 +173,7 @@ const keyboardConfig = {
             type: ActionKey
         },
         Space: {
-            type: ActionKey, w: 360, label: 'space',
+            type: ActionKey, w: 354, label: 'space',
         },
         Clear: {
             type: ActionKey, label: 'clear'

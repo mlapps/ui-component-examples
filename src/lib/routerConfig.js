@@ -3,7 +3,7 @@ import {Colors} from "@lightningjs/sdk";
 import { ListAsColumn, ListAsColumnWithScroll, ListAsRow, ListAsRowWithScroll, ListCombo } from "../examples/list";
 import { GridAsColumns, GridAsColumnsMosaic, GridAsColumnsWithScroll, GridAsRows, GridAsRowsMosaic, GridAsRowsWithScroll } from "../examples/grid";
 import { CarouselAsColumn, CarouselAsRow } from "../examples/carousel";
-import { KeyboardSimple } from "../examples/keyboard";
+import { KeyboardAdvanced, KeyboardSimple } from "../examples/keyboard";
 
 const routes = [
     {
@@ -74,6 +74,11 @@ const routes = [
     {
         path: 'KeyboardSimple',
         component: KeyboardSimple,
+        widgets: ['menu']
+    },
+    {
+        path: 'KeyboardAdvanced',
+        component: KeyboardAdvanced,
         widgets: ['menu']
     }
 ]
