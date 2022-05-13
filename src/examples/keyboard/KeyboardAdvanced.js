@@ -17,9 +17,17 @@
  * limitations under the License.
  */
 
-import Page from "../../app/Page";
-import { Keyboard, Key as BaseKey, InputField} from "@lightningjs/ui";
-import { Colors, Utils } from "@lightningjs/sdk";
+import {
+  Colors,
+  Utils,
+} from '@lightningjs/sdk';
+import {
+  InputField,
+  Key as BaseKey,
+  Keyboard,
+} from '@lightningjs/ui';
+
+import Page from '../../app/Page';
 
 export default class KeyboardAdvanced extends Page {
     static _template() {
@@ -30,7 +38,7 @@ export default class KeyboardAdvanced extends Page {
                     InputField: {x: 20, y: 20, type: InputField},
                 },
                 Keyboard: {
-                    y: 380, w: 1920, type: Keyboard, config: keyboardConfig, currentLayout: 'abc', maxCharacters: 24
+                    y: 380, w: 1920, type: Keyboard, config: keyboardConfig, currentLayout: 'abc', maxCharacters: 24, signals: {onSearch: true}
                 },
             }
         }
@@ -39,6 +47,10 @@ export default class KeyboardAdvanced extends Page {
     _setup() {
         const inputField = this.tag('InputField');
         this.tag('Keyboard').inputField(inputField);
+    }
+
+    onSearch(event) {
+        console.log('search', event.input)
     }
 
     _active() {
@@ -104,7 +116,7 @@ class ActionKey extends BaseKey {
 
     static get height() {
         return 60;
-    }
+    }   
 
     static get width() {
         return 160;
@@ -144,13 +156,13 @@ const keyboardConfig = {
             ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'],
             ['k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't'],
             ['u', 'v', 'w', 'x', 'y', 'z', '_', '-', '@', '.'],
-            ['Layout:ABC', 'Layout:123', 'Space', 'Clear', 'Backspace']
+            ['Layout:ABC', 'Layout:123', 'Space', 'Search', 'Backspace']
         ],
         'ABC': [
             ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
             ['K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'],
             ['U', 'V', 'W', 'X', 'Y', 'Z', '_', '-', '@', '.'],
-            ['Layout:abc', 'Layout:123', 'Space', 'Clear', 'Backspace']
+            ['Layout:abc', 'Layout:123', 'Space', 'Search', 'Backspace']
         ],
         '123': [
             ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
@@ -177,6 +189,9 @@ const keyboardConfig = {
         },
         Clear: {
             type: ActionKey, label: 'clear'
+        },
+        Search: {
+            type: ActionKey, label: 'search'
         }
     }
 };
